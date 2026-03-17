@@ -11,16 +11,11 @@
   <div class="method-grid">
     <app-donation-option-card
       title="Schedule Pickup"
-      description="Request a courier pickup from your current address. Destination is automatically set to Beauty Forward's warehouse."
+      description="Request a courier pickup from your current address to Beauty Forward's warehouse."
       ctaLabel="Start Pickup"
       route="/pickup"
       badge="Fastest"
       icon="⇢"
-      [highlights]="[
-        'No destination entry needed',
-        'Uber-like flow with review before submit',
-        'Optional pay-what-you-wish support'
-      ]"
     />
 
     <app-donation-option-card
@@ -29,11 +24,6 @@
       ctaLabel="Start Shipping"
       route="/shipping"
       icon="⬚"
-      [highlights]="[
-        'Capture sender details and package notes',
-        'Shipping label architecture ready for integration',
-        'Submission stored for fulfillment follow-up'
-      ]"
     />
 
     <app-donation-option-card
@@ -42,11 +32,6 @@
       ctaLabel="Start Drop-Off"
       route="/dropoff"
       icon="◎"
-      [highlights]="[
-        'Choose preferred date and window',
-        'Auto-generated confirmation reference',
-        'Simple verification at handoff'
-      ]"
     />
   </div>
 
