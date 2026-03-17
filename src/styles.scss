@@ -1,7 +1,23 @@
+@import url('https://fonts.googleapis.com');
+
+@font-face {
+  font-family: 'Ithaca';
+  src: url('../fonts/ithaca/Ithaca.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fonts/Montserrat/Montserrat-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  --font-body: 'Avenir Next', 'Segoe UI', 'Trebuchet MS', sans-serif;
-  --font-display: 'Palatino', 'Book Antiqua', 'Times New Roman', serif;
-  --bg: #f3f6f4;
+  --font-body: 'Montserrat', Arial, sans-serif;
+  --font-display: 'Ithaca', 'Palatino', 'Book Antiqua', 'Times New Roman', serif;
+  --bg: #ffe7d7;
   --surface: rgba(255, 255, 255, 0.9);
   --stroke: rgba(14, 50, 56, 0.15);
   --text-main: #173236;
@@ -26,10 +42,10 @@ body {
 body {
   font-family: var(--font-body);
   color: var(--text-main);
-  background:
-    radial-gradient(circle at 90% -10%, rgba(90, 169, 135, 0.16), transparent 48%),
-    radial-gradient(circle at 5% 110%, rgba(13, 103, 109, 0.13), transparent 45%),
-    var(--bg);
+  background: var(--bg);
+  // background:
+  //   radial-gradient(circle at 90% -10%, rgba(90, 169, 135, 0.16), transparent 48%),
+  //   radial-gradient(circle at 5% 110%, rgba(13, 103, 109, 0.13), transparent 45%), var(--bg);
 }
 
 h1,
@@ -37,6 +53,7 @@ h2,
 h3,
 h4 {
   margin: 0;
+  letter-spacing: 5px;
 }
 
 p {
@@ -164,12 +181,13 @@ p {
 }
 
 .button-primary {
-  background: linear-gradient(140deg, #177466, #0f5950);
-  color: #f7fffd;
+  background: black;
+  color: white;
 }
 
 .button-primary:hover {
-  filter: brightness(1.03);
+  background-color: #f2cbb8;
+  color: brown;
 }
 
 .button-secondary {
