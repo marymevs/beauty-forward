@@ -1,0 +1,104 @@
+export type DonationType = 'pickup' | 'shipping' | 'dropoff';
+
+export type DonationStatus =
+  | 'submitted'
+  | 'queued_for_dispatch'
+  | 'dispatch_requested'
+  | 'pending_label_purchase'
+  | 'dropoff_requested'
+  | 'completed';
+
+export interface DonorInfo {
+  fullName: string;
+  email: string;
+  phone: string;
+  donorAccountId?: string;
+}
+
+export interface AddressInfo {
+  line1: string;
+  line2?: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  instructions?: string;
+}
+
+export interface ContributionIntent {
+  provider: 'givebutter';
+  status: 'not_started' | 'checkout_started' | 'completed' | 'skipped';
+  amountUsd?: number;
+  checkoutUrl?: string;
+}
+
+export interface PickupDetails {
+  pickupAddress: AddressInfo;
+  preferredDate: string;
+  preferredTimeWindow: string;
+  donationNotes?: string;
+  warehouseAddress: AddressInfo;
+}
+
+export interface ShippingDetails {
+  senderAddress: AddressInfo;
+  shippingLabelRequested: boolean;
+  packageNotes?: string;
+  shippingLabelIntentAmountUsd?: number;
+  shippingLabelQuoteId?: string;
+}
+
+export interface DropoffDetails {
+  preferredDate: string;
+  preferredTimeWindow: string;
+  dropoffNotes?: string;
+  locationName: string;
+  locationAddress: AddressInfo;
+  referenceCode?: string;
+}
+
+export interface CreateDonationRequestPayload {
+  donationType: DonationType;
+  donor: DonorInfo;
+  contribution: ContributionIntent;
+  pickup?: PickupDetails;
+  shipping?: ShippingDetails;
+  dropoff?: DropoffDetails;
+  metadata?: Record<string, unknown>;
+}
+
+export interface DonationSubmissionResult {
+  requestId: string;
+  donationType: DonationType;
+  status: DonationStatus;
+  createdAt: string;
+  nextSteps: string[];
+  dropoffReference?: string;
+  courierDispatchId?: string;
+  shippingLabelReference?: string;
+}
+
+export interface CreateContributionSessionPayload {
+  donationType: DonationType;
+  amountUsd?: number;
+  donorEmail?: string;
+  requestId?: string;
+}
+
+export interface ContributionSessionResponse {
+  provider: 'givebutter';
+  sessionId: string;
+  checkoutUrl: string;
+}
+
+export interface CourierDispatchResult {
+  provider: 'mock-roadie';
+  dispatchId: string;
+  status: 'queued' | 'assigned';
+  etaWindow: string;
+}
+
+export interface ShippingLabelResult {
+  provider: 'mock-shipping-provider';
+  quoteId: string;
+  status: 'pending_checkout' | 'ready';
+}
